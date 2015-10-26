@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:key="example_switch"
+        android:title="@string/pref_title_storage_option"
+        android:summary="@string/pref_description_storage_option"
+        android:defaultValue="true" />
+    <EditTextPreference
+        android:key="example_text"
+        android:title="@string/pref_title_file_name"
+        android:defaultValue="@string/pref_description_file_name"
+        android:selectAllOnFocus="true"
+        android:inputType="textCapWords"
+        android:capitalize="words"
+        android:singleLine="true"
+        android:maxLines="1" />
+</PreferenceScreen>
