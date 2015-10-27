@@ -60,7 +60,6 @@ public class FicherosActivity extends AppCompatActivity {
     public void accionAniadirLocal(View v) {
         try {
             FileOutputStream fos = openFileOutput(NOMBRE_FICHERO, Context.MODE_APPEND);
-            //FileOutputStream fos = new FileOutputStream(RUTA_FICHERO, true);
             fos.write(lineaTexto.getText().toString().getBytes());
             fos.write('\n');
             fos.close();
@@ -75,7 +74,6 @@ public class FicherosActivity extends AppCompatActivity {
         String estadoTarjetaSD = Environment.getExternalStorageState();
         try {
             if (estadoTarjetaSD.equals(Environment.MEDIA_MOUNTED)) {
-                // FileOutputStream fos = openFileOutput(NOMBRE_FICHERO, Context.MODE_APPEND);
                 FileOutputStream fos = new FileOutputStream(RUTA_FICHERO, true);
                 fos.write(lineaTexto.getText().toString().getBytes());
                 fos.write('\n');
@@ -102,8 +100,7 @@ public class FicherosActivity extends AppCompatActivity {
         boolean hayContenido = false;
         contenidoFichero.setText("");
         try {
-                 BufferedReader fin = new BufferedReader(new InputStreamReader(openFileInput(NOMBRE_FICHERO)));
-                //BufferedReader fin = new BufferedReader(new FileReader(new File(RUTA_FICHERO)));
+                BufferedReader fin = new BufferedReader(new InputStreamReader(openFileInput(NOMBRE_FICHERO)));
                 String linea = fin.readLine();
                 while (linea != null) {
                     hayContenido = true;
@@ -128,8 +125,6 @@ public class FicherosActivity extends AppCompatActivity {
         contenidoFichero.setText("");
         try {
             if (fichero.exists() && estadoTarjetaSD.equals(Environment.MEDIA_MOUNTED)) {
-                // BufferedReader fin =
-                //        new BufferedReader(new InputStreamReader(openFileInput(NOMBRE_FICHERO)));
                 BufferedReader fin = new BufferedReader(new FileReader(new File(RUTA_FICHERO)));
                 String linea = fin.readLine();
                 while (linea != null) {
@@ -181,7 +176,6 @@ public class FicherosActivity extends AppCompatActivity {
     public void borrarContenidoLocal() {
         try {
                 FileOutputStream fos = openFileOutput(NOMBRE_FICHERO, Context.MODE_PRIVATE);
-                //FileOutputStream fos = new FileOutputStream(RUTA_FICHERO);
                 fos.close();
                 Log.i("FICHERO", "opción Limpiar -> VACIAR el fichero");
                 lineaTexto.setText(""); // limpio la linea de edición
@@ -196,11 +190,10 @@ public class FicherosActivity extends AppCompatActivity {
         String estadoTarjetaSD = Environment.getExternalStorageState();
         try {
             if (estadoTarjetaSD.equals(Environment.MEDIA_MOUNTED)) {
-                // FileOutputStream fos = openFileOutput(NOMBRE_FICHERO, Context.MODE_PRIVATE);
                 FileOutputStream fos = new FileOutputStream(RUTA_FICHERO);
                 fos.close();
                 Log.i("FICHERO", "opción Limpiar -> VACIAR el fichero");
-                lineaTexto.setText(""); // limpio la linea de edición
+                lineaTexto.setText("");
                 mostrarContenido(contenidoFichero);
             }
         } catch (Exception e) {
